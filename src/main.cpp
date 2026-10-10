@@ -4,12 +4,12 @@ int main() {
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "raylib - basic window");
+    InitWindow(screenWidth, screenHeight, "Snake Game - Raylib");
     SetTargetFPS(60);
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        DrawText("Congrats! Raylib is working with CMake!", 190, 200, 20, LIGHTGRAY);
+        DrawText("Canvas & GameLoop Created", 190, 200, 20, LIGHTGRAY);
         EndDrawing();
     }
 
