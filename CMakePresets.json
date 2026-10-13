@@ -1,0 +1,50 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "w64devkit-base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "environment": {
+                "PATH": "$penv{PATH};C:/w64devkit/bin"
+            },
+            "cacheVariables": {
+                "CMAKE_MAKE_PROGRAM": "C:/w64devkit/bin/ninja.exe",
+                "CMAKE_C_COMPILER": "C:/w64devkit/bin/gcc.exe",
+                "CMAKE_CXX_COMPILER": "C:/w64devkit/bin/g++.exe",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "TRUE"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release (w64devkit)",
+            "description": "Optimized release build",
+            "inherits": "w64devkit-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug (w64devkit)",
+            "description": "Debug build with symbols",
+            "inherits": "w64devkit-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "release",
+            "displayName": "Release Build",
+            "configurePreset": "release"
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug Build",
+            "configurePreset": "debug"
+        }
+    ]
+}

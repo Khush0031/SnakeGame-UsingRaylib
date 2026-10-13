@@ -20,7 +20,7 @@ FetchContent_Declare(
 
 # Optional optimization: disable building raylib examples to save compile time
 set(BUILD_EXAMPLES OFF CACHE INTERNAL "")
-
+set(BUILD_GAMES OFF CACHE INTERNAL "")
 FetchContent_MakeAvailable(raylib)
 
 # --- Define Executable Target ---
@@ -28,3 +28,10 @@ add_executable(${PROJECT_NAME} src/main.cpp)
 
 # --- Link Raylib ---
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
+
+# --- Copy Assets and Highscore File ---
+file(COPY "${CMAKE_SOURCE_DIR}/assets" DESTINATION "${CMAKE_BINARY_DIR}")
+
+if(EXISTS "${CMAKE_SOURCE_DIR}/highscore.txt")
+    file(COPY "${CMAKE_SOURCE_DIR}/highscore.txt" DESTINATION "${CMAKE_BINARY_DIR}")
+endif()
